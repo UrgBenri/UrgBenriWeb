@@ -7,6 +7,7 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import {toggleSidebar} from '../actions'
+import EthernetComponent from './EthernetComponent';
 
 export const Connectors = ({onMenuTap}) => (
   <div>
@@ -25,12 +26,7 @@ export const Connectors = ({onMenuTap}) => (
         </div>
       </Tab>
       <Tab label="Ethernet">
-        <div>
-          <h2>Tab Two</h2>
-          <p>
-            This is another example tab.
-          </p>
-        </div>
+        <EthernetComponent />
       </Tab>
       <Tab label="File">
         <div>
