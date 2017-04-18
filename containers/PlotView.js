@@ -6,12 +6,14 @@ import clickdrag from 'react-clickdrag';
 import Dimensions from 'react-dimensions'
 
 import RangePlot from '../components/RangePlot';
+import GridPlot from '../components/GridPlot';
 import Converter from '../Sensor/Converter'
 
+//Sample data
 const converter = new Converter({firstStep: 0, lastStep: 1081, frontStep: 541, totalSteps: 1440});
 const ranges = Array
   .apply(null, Array(1081))
-  .map(Number.prototype.valueOf, 100)
+  .map(Number.prototype.valueOf, 1000)
 
 var scaleBy = 1.02;
 class PlotView extends React.Component {
@@ -95,7 +97,8 @@ class PlotView extends React.Component {
         y={this.state.currentY}
         rotation={-90}>
         <Layer>
-          <RangePlot ranges={ranges} converter={converter}/>
+          <GridPlot maxRange={30000} interval={1000}/>
+          <RangePlot ranges={ranges} converter={converter} stroke='green'/>
         </Layer>
       </Stage>
     )
