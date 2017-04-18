@@ -5,7 +5,7 @@ import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui
 const Footer = ({style}) => (
     <footer style={style}>
         <Toolbar>
-            <ToolbarGroup firstChild={true}>
+            <ToolbarGroup>
                 <ToolbarTitle text="Version 1.0.0" />
             </ToolbarGroup>
         </Toolbar>
