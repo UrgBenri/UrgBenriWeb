@@ -9,8 +9,8 @@ import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 import { toggleSidebar } from '../actions'
 
 
-export const Header = ({title, onMenuTap}) => (
-  <header>
+export const Header = ({style, title, onMenuTap}) => (
+  <header style={style}>
   <AppBar
     title={title}
     onLeftIconButtonTouchTap={onMenuTap}

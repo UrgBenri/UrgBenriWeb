@@ -13,13 +13,15 @@ injectTapEventPlugin();
 
 const App = () => (
   <MuiThemeProvider muiTheme={getMuiTheme()}>
-    <div>
-      <Header title='UrgBenriWeb' />
+    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'stretch', height: '100vh'}}>
+      <Header style={{flex: 'flex-shrink'}} title='UrgBenriWeb' />
       <Sidebar width={300}>
         <Connectors />
       </Sidebar>
-      <PlotView width={400} height={400}/>
-      <Footer />
+      <PlotView 
+          style={{flex: 'flex-grow'}}
+      />
+      <Footer style={{flex: 'flex-shrink'}}/>
     </div>
   </MuiThemeProvider>
 )

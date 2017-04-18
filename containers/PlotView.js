@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { findDOMNode } from 'react-dom';
 import {Layer, Rect, Stage, Group} from 'react-konva';
 import clickdrag from 'react-clickdrag';
+import Dimensions from 'react-dimensions'
 
 import RangePlot from '../components/RangePlot';
 import Converter from '../Sensor/Converter'
@@ -40,15 +42,19 @@ class PlotView extends React.Component {
         }
     }
   componentDidMount() {
+    const node = findDOMNode(this);
     this.stage = this.refs.stage;
     this.nativeStage = this
       .refs
       .stage
       .getStage();
-    window.addEventListener('wheel', this.handleWheel)
+    this.setState({
+        currentX: this.props.containerWidth/2,
+        currentY: this.props.containerHeight/2
+    });
+    node.addEventListener('wheel', this.handleWheel)
   }
   componentWillUnmount() {
-    window.removeEventListener('wheel', this.handleWheel)
   }
 
   handleWheel(e) {
@@ -82,8 +88,9 @@ class PlotView extends React.Component {
     return (
       <Stage
         ref="stage"
-        width={this.props.width}
-        height={this.props.height}
+        {...this.props}
+        width={this.props.containerWidth}
+        height={this.props.containerHeight}
         x={this.state.currentX}
         y={this.state.currentY}
         rotation={-90}>
@@ -95,4 +102,4 @@ class PlotView extends React.Component {
   }
 }
 
-export default clickdrag(PlotView, {touch: true});
+export default Dimensions()(clickdrag(PlotView, {touch: true}));
